@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fetchLatestTweets } from '../shared/utils';
+import List from './List';
 
 class Home extends Component {
   constructor(props) {
@@ -19,8 +20,7 @@ class Home extends Component {
   render() {
     if (this.state.isLoaded) {
       return (
-        <div>
-        </div>
+        <List tweets={ this.state.tweetData }/>
       );
     } else {
       return (
