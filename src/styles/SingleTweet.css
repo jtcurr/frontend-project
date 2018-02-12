@@ -1,0 +1,40 @@
+.listContainer {
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+}
+
+.tweetColumn, .dateColumn, .nameColumn {
+  display:flex;
+  flex-direction:column;
+}
+
+.tweetColumn {
+  width: 60%;
+}
+
+.dateColumn, .nameColumn {
+  width: 20%;
+}
+
+.mentionsList {
+  padding: 0;
+  font-size: 10px;
+  list-style-type: none;
+}
+
+@media only screen and (max-width: 500px) {
+    body {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    body {
+        font-size: 12px;
+    }
+
+    .tweetColumn, .dateColumn {
+      margin-right: 5%;
+    }
+}

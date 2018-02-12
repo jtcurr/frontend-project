@@ -14,3 +14,63 @@ export async function fetchLatestTweets(twitterHandles) {
       isLoaded: true
     }))
 }
+
+export function sortTweets(order) {
+  const months = {
+    Jan: '01',
+    Feb: '02',
+    Mar: '03',
+    Apr: '04',
+    May: '05',
+    Jun: '06',
+    Jul: '07',
+    Aug: '08',
+    Sep: '09',
+    Oct: '10',
+    Nov: '11',
+    Dec: '12'
+  }
+  //Sorts Tweets in most recent Tweets first, by date
+  let sortedTweets = this.props.tweets.sort((a, b) => {
+    let a_dateString = '';
+    a = a.created_at.split(' ');
+    a[1] = months[a[1]];
+    a_dateString = a[5] + a[1] + a[2];
+    let b_dateString = ''
+    b = b.created_at.split(' ');
+    b[1] = months[b[1]];
+    b_dateString = b[5] + b[1] + b[2];
+    if(order === 'newestFirst') {
+      return a_dateString < b_dateString ? 1 : a_dateString > b_dateString ? -1 : 0
+    } else {
+      return a_dateString > b_dateString ? 1 : a_dateString < b_dateString ? -1 : 0
+    }
+    
+  });
+  this.setState({
+    tweets: sortedTweets
+  })
+}
+
+export async function fetchLocalStorage() {
+  const config = await JSON.parse(localStorage.getItem('config'));
+  if (!config) {
+    this.config = {
+      background_color: 'white',
+      font_color: 'black',
+      number_of_tweets: 'all',
+      order_of_tweets: 'newestFirst',
+      month_of_tweets: 'all'
+    }
+  } else {
+    this.config = {
+      background_color: config.background_color,
+      font_color: config.font_color,
+      number_of_tweets: config.month_of_tweets,
+      order_of_tweets: config.order_of_tweets,
+      month_of_tweets: config.month_of_tweets
+    }
+  }
+  localStorage.clear();
+  return;
+}

@@ -1,43 +1,33 @@
 import React, { Component } from 'react';
+import SingleTweet from './SingleTweet';
+import { sortTweets } from '../shared/utils';
 
 class List extends Component {
   constructor(props) {
     super(props);
+    this.state= {
+      tweets : []
+    }
+    this.sortTweets = sortTweets.bind(this);
   }
 
   componentDidMount() {
-    const months = {
-      Jan: '01',
-      Feb: '02',
-      Mar: '03',
-      Apr: '04',
-      May: '05',
-      Jun: '06',
-      Jul: '07',
-      Aug: '08',
-      Sep: '09',
-      Oct: '10',
-      Nov: '11',
-      Dec: '12'
-    }
-    //Sorts Tweets in most recent Tweets first, by date
-    let sortedTweets = this.props.tweets.sort((a, b) => {
-      let a_dateString = '';
-      a = a.created_at.split(' ');
-      a[1] = months[a[1]];
-      a_dateString = a[5] + a[1] + a[2];
-      let b_dateString = ''
-      b = b.created_at.split(' ');
-      b[1] = months[b[1]];
-      b_dateString = b[5] + b[1] + b[2];
-      return a_dateString < b_dateString ? 1 : a_dateString > b_dateString ? -1 : 0;;
-    });
+    this.sortTweets('newestFirst');
   }
 
   render() {
     return (
       <div>
-        Loading...
+        <h1>
+          Twitter
+        </h1>
+          {this.state.tweets.map((tweet, key) => {
+            return (
+              <div key={ key }>
+                <SingleTweet tweet={ tweet } config={ this.props.config }/>
+              </div>
+            )
+          })}
       </div>
     )
   }
