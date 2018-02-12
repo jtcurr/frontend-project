@@ -6,8 +6,7 @@ class SingleTweet extends Component {
   constructor(props) {
     super(props);
     //Defaults link to twitter if tweet and user have not url (for older tweets)
-    this.tweet_link_url = this.props.tweet.user.url ? this.props.tweet.user.url : 'https://twitter.com/'+ this.props.tweet.user.screen_name
-    console.log('THS', this.props.tweet)
+    this.tweet_link_url = this.props.tweet.user.url ? this.props.tweet.user.url : 'https://twitter.com/'+ this.props.tweet.user.screen_name;
   }
 
   formatDate(dateString) {
@@ -29,7 +28,11 @@ class SingleTweet extends Component {
               <ul className='mentionsList'>
               Mentions
               { this.props.tweet.entities.user_mentions.map((user, key) => {
-                return <li className='mentionsItem' key={ key }>@{user.screen_name}</li>
+                return (
+                  <li className='mentionsItem' key={ key }>
+                    <a href={'https://twitter.com/' + user.screen_name}>@{user.screen_name}</a>
+                  </li>
+                )
               })}
               </ul>
           </div>
