@@ -1,10 +1,9 @@
-Trizic Web Developer Assessment
+-Trizic Web Developer Assessment
 
-Setup:
-
+-Setup:
 Clone from: https://github.com/jtcurr/trizic
 Run npm install
 Run npm start to run on local system
-Author:
 
+-Author:
 John Currie

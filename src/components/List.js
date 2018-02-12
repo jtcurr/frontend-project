@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SingleTweet from './SingleTweet';
 import { formatTweets } from '../shared/utils';
+import '../styles/List.css';
 
 class List extends Component {
   constructor(props) {
@@ -16,6 +17,13 @@ class List extends Component {
   }
 
   render() {
+    if(this.state.tweets.length === 0) {
+      return (
+        <div className='errorContainer' style={{color: this.props.config.font_color, backgroundColor: this.props.config.background_color}}>
+          I'm sorry, there are no tweets that match that criteria
+        </div>
+      )
+    }
     return (
       <div>
         <h1 style={{color: this.props.config.font_color}}>
