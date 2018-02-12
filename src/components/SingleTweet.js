@@ -9,6 +9,10 @@ class SingleTweet extends Component {
     this.tweet_link_url = this.props.tweet.user.url ? this.props.tweet.user.url : 'https://twitter.com/'
   }
 
+  componentDidMount() {
+    console.log(this.props.tweet)
+  }
+
   formatDate(dateString) {
     //Formats date in Month/Day/Year format
     let formattedString = '';
@@ -21,7 +25,7 @@ class SingleTweet extends Component {
     return (
       <div className='listContainer' style={{color: this.props.config.font_color }}>
         <div className='tweetColumn'>
-          <a href={ this.props.tweet.entities.urls.length > 1 ? this.props.tweet.entities.urls[0].url : this.tweet_link_url}>
+          <a href={ this.props.tweet.entities.urls.length > 0 ? this.props.tweet.entities.urls[0].url : this.tweet_link_url}>
             { this.props.tweet.text }
           </a>
           <div style={{display: this.props.tweet.entities.user_mentions.length > 0 ? null : 'none'}}>
