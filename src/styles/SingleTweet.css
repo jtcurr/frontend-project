@@ -1,3 +1,7 @@
+a { 
+  color: inherit; 
+}
+
 .listContainer {
   display:flex;
   flex-direction:row;

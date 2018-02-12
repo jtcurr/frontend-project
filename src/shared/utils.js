@@ -17,6 +17,7 @@ export async function fetchLatestTweets(twitterHandles) {
 
 export async function fetchLocalStorage() {
   const config = await JSON.parse(localStorage.getItem('config'));
+  //Returns defaults if local storage hasn't been set yet
   if (!config) {
     this.config = {
       background_color: 'white',
@@ -33,8 +34,9 @@ export async function fetchLocalStorage() {
       order_of_tweets: config.order_of_tweets,
       month_of_tweets: config.month_of_tweets
     }
+    //Clears local storage of the edited config object
+    localStorage.removeItem('config');
   }
-  localStorage.clear();
   return;
 }
 
