@@ -15,7 +15,35 @@ export async function fetchLatestTweets(twitterHandles) {
     }))
 }
 
-export function sortTweets(order) {
+export async function fetchLocalStorage() {
+  const config = await JSON.parse(localStorage.getItem('config'));
+  if (!config) {
+    this.config = {
+      background_color: 'white',
+      font_color: 'black',
+      number_of_tweets: 'all',
+      order_of_tweets: 'newestFirst',
+      month_of_tweets: 'all'
+    }
+  } else {
+    this.config = {
+      background_color: config.background_color,
+      font_color: config.font_color,
+      number_of_tweets: config.number_of_tweets,
+      order_of_tweets: config.order_of_tweets,
+      month_of_tweets: config.month_of_tweets
+    }
+  }
+  localStorage.clear();
+  return;
+}
+
+export function formatTweets(order, month, limit) {
+  sortTweets.call(this, order, month, limit);
+  return;
+}
+
+function sortTweets(order, month, limit) {
   const months = {
     Jan: '01',
     Feb: '02',
@@ -47,30 +75,36 @@ export function sortTweets(order) {
     }
     
   });
-  this.setState({
-    tweets: sortedTweets
-  })
+  filterTweetsByMonth.call(this, sortedTweets, month, limit);
+  return;
 }
 
-export async function fetchLocalStorage() {
-  const config = await JSON.parse(localStorage.getItem('config'));
-  if (!config) {
-    this.config = {
-      background_color: 'white',
-      font_color: 'black',
-      number_of_tweets: 'all',
-      order_of_tweets: 'newestFirst',
-      month_of_tweets: 'all'
-    }
+function filterTweetsByMonth(tweetArray, month, limit) {
+  if (month === 'all') {
+    filterNumberOfTweets.call(this, tweetArray, limit);
+    return;
   } else {
-    this.config = {
-      background_color: config.background_color,
-      font_color: config.font_color,
-      number_of_tweets: config.month_of_tweets,
-      order_of_tweets: config.order_of_tweets,
-      month_of_tweets: config.month_of_tweets
+    let filteredTweetArray = [];
+    for (let i = 0; i < tweetArray.length; i++) {
+      if (tweetArray[i].created_at.split(' ')[1] === month) {
+        filteredTweetArray.push(tweetArray[i]);
+      }
     }
+    filterNumberOfTweets.call(this, filteredTweetArray, limit);
+    return;
   }
-  localStorage.clear();
-  return;
+}
+
+function filterNumberOfTweets(tweetArray, limit) {
+  if (limit === 'all') {
+    this.setState({
+      tweets: tweetArray
+    })
+    return;
+  } else {
+    this.setState({
+      tweets: tweetArray.slice(0, limit)
+    })
+    return;
+  }
 }

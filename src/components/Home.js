@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { fetchLatestTweets, fetchLocalStorage } from '../shared/utils';
 import List from './List';
+import '../styles/Home.css';
 
 class Home extends Component {
   constructor(props) {
@@ -28,8 +29,8 @@ class Home extends Component {
   render() {
     if (this.state.isLoaded) {
       return (
-        <div style={{'backgroundColor': this.config.background_color}}>
-          <button onClick={ this.handleEdit }> Edit this page</button>
+        <div className='homeContainer' style={{'backgroundColor': this.config.background_color}}>
+          <button className='editButton'onClick={ this.handleEdit }> Edit this page</button>
           <List tweets={ this.state.tweetData } config={ this.config }/>
         </div>
       );

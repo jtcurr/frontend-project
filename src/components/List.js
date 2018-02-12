@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SingleTweet from './SingleTweet';
-import { sortTweets } from '../shared/utils';
+import { formatTweets } from '../shared/utils';
 
 class List extends Component {
   constructor(props) {
@@ -8,17 +8,17 @@ class List extends Component {
     this.state= {
       tweets : []
     }
-    this.sortTweets = sortTweets.bind(this);
+    this.formatTweets = formatTweets.bind(this);
   }
 
   componentDidMount() {
-    this.sortTweets('newestFirst');
+    this.formatTweets(this.props.config.order_of_tweets, this.props.config.month_of_tweets, this.props.config.number_of_tweets);
   }
 
   render() {
     return (
       <div>
-        <h1>
+        <h1 style={{color: this.props.config.font_color}}>
           Twitter
         </h1>
           {this.state.tweets.map((tweet, key) => {

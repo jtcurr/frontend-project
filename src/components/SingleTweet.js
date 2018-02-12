@@ -3,10 +3,6 @@ import '../styles/SingleTweet.css';
 
 class SingleTweet extends Component {
 
-  componentDidMount() {
-      // console.log('PROPS', this.props)
-  }
-
   formatDate(dateString) {
     let formattedString = '';
     dateString = dateString.split(' ');
@@ -16,7 +12,7 @@ class SingleTweet extends Component {
 
   render() {
     return (
-      <div className='listContainer'>
+      <div className='listContainer' style={{color: this.props.config.font_color }}>
         <div className='tweetColumn'>
           <a href={ this.props.tweet.entities.urls.length > 1 ? this.props.tweet.entities.urls[0].url : this.props.tweet.user.url}>
             { this.props.tweet.text }
