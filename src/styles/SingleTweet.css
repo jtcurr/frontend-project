@@ -6,6 +6,7 @@ a {
   display:flex;
   flex-direction:row;
   justify-content: space-around;
+  margin-bottom: 10px;
 }
 
 .tweetColumn, .dateColumn, .nameColumn {
@@ -19,6 +20,10 @@ a {
 
 .dateColumn, .nameColumn {
   width: 20%;
+}
+
+.nameColumn {
+  font-weight: bold;
 }
 
 .mentionsList {

@@ -43,6 +43,7 @@ class SingleTweet extends Component {
         <div className='nameColumn'>
           { this.props.tweet.user.name }
         </div>
+      <hr />
       </div>
     )
   }
