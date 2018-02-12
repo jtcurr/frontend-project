@@ -1,3 +1,8 @@
+body, html {
+  margin: 0;
+  height: 100%;
+}
+
 .editButton {
   position: absolute;
   top: 0;
@@ -13,13 +18,10 @@
   left: 0;
   padding-left: 8%;
   width: 92%;
+  min-height: 100%;
 }
 
 .loadingContainer {
   margin-left: 45%;
   margin-top: 20%;
-}
-
-body {
-  margin: 0;
 }

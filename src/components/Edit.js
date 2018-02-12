@@ -5,13 +5,9 @@ class Edit extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      background_color: 'white',
-      font_color: 'black',
-      number_of_tweets: 'all',
-      order_of_tweets: 'newestFirst',
-      month_of_tweets: 'all'
-    };
+
+    let config = JSON.parse(localStorage.getItem('config'));
+    this.state = config
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,7 +25,7 @@ class Edit extends Component {
 
   render() {
     return (
-      <div className='editFormContainer'>
+      <div>
         <form className='editForm' onSubmit={this.handleSubmit}>
           <div>
             <label>
