@@ -9,10 +9,6 @@ class SingleTweet extends Component {
     this.tweet_link_url = this.props.tweet.user.url ? this.props.tweet.user.url : 'https://twitter.com/'
   }
 
-  componentDidMount() {
-    console.log(this.props.tweet)
-  }
-
   formatDate(dateString) {
     //Formats date in Month/Day/Year format
     let formattedString = '';
