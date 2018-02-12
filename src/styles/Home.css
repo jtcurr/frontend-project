@@ -16,6 +16,11 @@
   height: 100%;
 }
 
+.loadingContainer {
+  margin-left: 45%;
+  margin-top: 20%;
+}
+
 body {
   margin: 0;
 }

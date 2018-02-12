@@ -3,7 +3,14 @@ import '../styles/SingleTweet.css';
 
 class SingleTweet extends Component {
 
+  constructor(props) {
+    super(props);
+    //Defaults link to twitter if tweet and user have not url
+    this.tweet_link_url = this.props.tweet.user.url ? this.props.tweet.user.url : 'https://twitter.com/'
+  }
+
   formatDate(dateString) {
+    //Formats date in Month/Day/Year format
     let formattedString = '';
     dateString = dateString.split(' ');
     formattedString = dateString[1] + '/' + dateString[2] + '/' + dateString[5];

@@ -36,7 +36,7 @@ class Home extends Component {
       );
     } else {
       return (
-        <div>
+        <div className='loadingContainer'>
           Loading...
         </div>
       )
