@@ -16,10 +16,22 @@ a {
 
 .tweetColumn {
   width: 60%;
+  display: inline;
+}
+
+.tweetBody {
+  margin-top: -20px;
 }
 
 .dateColumn, .nameColumn {
   width: 20%;
+}
+
+.profilePic {
+  margin-bottom: -5px;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
 }
 
 .nameColumn {
