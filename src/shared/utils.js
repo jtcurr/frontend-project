@@ -26,7 +26,7 @@ export async function fetchLocalStorage() {
       order_of_tweets: 'newestFirst',
       month_of_tweets: 'all'
     }
-    localStorage.setItem('config', JSON.stringify(config));
+    localStorage.setItem('config', JSON.stringify(this.config));
   } else {
     this.config = {
       background_color: config.background_color,

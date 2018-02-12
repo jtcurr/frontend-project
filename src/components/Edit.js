@@ -8,7 +8,6 @@ class Edit extends Component {
 
     let config = JSON.parse(localStorage.getItem('config'));
     this.state = config
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }

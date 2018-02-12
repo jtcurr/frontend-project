@@ -5,8 +5,9 @@ class SingleTweet extends Component {
 
   constructor(props) {
     super(props);
-    //Defaults link to twitter if tweet and user have not url
-    this.tweet_link_url = this.props.tweet.user.url ? this.props.tweet.user.url : 'https://twitter.com/'
+    //Defaults link to twitter if tweet and user have not url (for older tweets)
+    this.tweet_link_url = this.props.tweet.user.url ? this.props.tweet.user.url : 'https://twitter.com/'+ this.props.tweet.user.screen_name
+    console.log('THS', this.props.tweet)
   }
 
   formatDate(dateString) {
